@@ -38,8 +38,9 @@ public class Tienda
 	    descuento = 0.95 * precioReal;     // El 5% descontado es = 95% del precio real
 	}
 	
+	 System.out.printf("Se descontarán: %.2f$%n", precioReal - descuento);
 	 System.out.printf("El precio final será de: %.2f$%n", descuento); 
-	 System.out.printf("Se descontaron: %.2f$%n", precioReal - descuento);
+	 
 	
 	sc.close();
 	    }   
