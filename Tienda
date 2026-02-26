@@ -4,6 +4,7 @@ descuentos. Laas reglas de negocios son:
 -Clientes VIP: reciben un 20% de descuento y si su compran 5 o más productos reciben un 10% adicional.
 -Clientes Premium: reciben un 15% de descuento y si compran 3 o más productos reciben un 5% adicional.
 -Clientes Regulares: reciben un 5% de descuento fijo.
+El siguiente programa calculará y mostrará el precio final y el descuento aplicado.
 */
 import java.util.Scanner;
 public class Tienda
@@ -11,45 +12,35 @@ public class Tienda
 	public static void main(String[] args) {
 	Scanner sc= new Scanner(System.in);
 	    
-	  double descuentoEspecial = 0;
-		double descuentoNormal= 0;
-		double descuentoFijo = 0;    
-	    
-	    System.out.println("Ingrese la cantidad de productos a comprar: ");
-		int cantidadProductos = sc.nextInt();
-		System.out.println("Ingrese el precio a pagar: ");
-		double precioReal = sc.nextDouble();
-		System.out.println("Ingrese la categoría del cliente: ");
-		String categoria = sc.next();
-		
-	
-		
-		//Situación para clientes Premium
-		if(categoria.equalsIgnoreCase("vip")){
-		    if(cantidadProductos >= 5){
-		         descuentoEspecial = precioReal*0.70; //Descuenta el 30%
-		 System.out.printf("El precio con descuento a compras mayores o iguales a 5 productos es: \n%.2f$%n", descuentoEspecial);
-		    }else{
-		         descuentoNormal = precioReal*0.80; //Descuenta el 20%
-		 System.out.printf("El precio con descuento a compras menores de 5 productos es: \n%.2f$%n", descuentoNormal);
-		    }
-		
-		//Situación para clientes Premium
-		}else if(categoria.equalsIgnoreCase("premium")){
-		    if(cantidadProductos >= 3 ){
-		         descuentoEspecial = precioReal*0.80; //Descuenta el 20%
-		 System.out.printf("El precio con descuento a compras mayores o iguales de 3 productos es: \n%.2f$%n", descuentoEspecial);
-		    }else{
-		         descuentoNormal = precioReal*0.85; //Descuenta el 15%
-		    System.out.printf("El precio con descuento a compras menores de 3 productos es: \n%.2f$%n", descuentoNormal);
-		    }
-		 
-		 //Situacion para clientes regulares
-		 }else if( (categoria.equalsIgnoreCase("regular")) || (categoria.equalsIgnoreCase("regulares")) ){
-		     descuentoFijo = precioReal*0.95; //Descuenta el 5%
-		 System.out.printf("El precio con descuento fijo es: \n%.2f$%n", descuentoFijo);
-		}
-		
-		sc.close();
+	 System.out.println("Ingrese la cantidad de productos a comprar: ");
+	 int cantidadProd = sc.nextInt();
+	 System.out.println("Ingrese el precio total de los productos: ");
+	 double precioReal = sc.nextDouble();
+	 System.out.println("Ingrese la categoría del cliente: ");
+	 String cliente = sc.next();
+	 
+	 double descuento = 0;
+	 
+	 //Descuento para clientes VIP
+	 if (cliente.equalsIgnoreCase("vip")){
+	    descuento = 0.8 * precioReal;       // El 20% descontado es = 80% del precio real
+	    if( cantidadProd >= 5 ){
+	        descuento *= 0.9;  // Segundo descuento del 10% adicional al precio rebajado
+	    }
+	 //Descuento para clientes Premium
+	} else if(cliente.equalsIgnoreCase("premium")){
+	    descuento = 0.85 * precioReal;       // El 15% descontado es = 85% del precio real
+	    if( cantidadProd >= 3 ){
+	        descuento *= 0.9;  //Descuento del 5% adicional aplicado al precio rebajado
+	    }   
+	 //Descuento fijo para clientes regulares   
+	} else if(cliente.equalsIgnoreCase("regular")){
+	    descuento = 0.95 * precioReal;     // El 5% descontado es = 95% del precio real
 	}
-}
+	
+	 System.out.printf("El precio final será de: %.2f$%n", descuento); 
+	 System.out.printf("Se descontaron: %.2f$%n", precioReal - descuento);
+	
+	sc.close();
+	    }   
+	}
