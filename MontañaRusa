@@ -1,0 +1,46 @@
+/* Aprendiendo a hacer if anidados en java, pera ello se me solicita un programa que verifica si alguien puede montar en una montaña rusa.  
+Los requisitos son:
+
+Debe tener al menos 12 años
+Debe medir más de 150 cm
+Si cumplen ambos requisitos pero tienen menos de 15 años, necesitan supervisión de un adulto
+Imprime exactamente estos mensajes para cada caso:
+
+Si es demasiado joven: Lo sentimos, eres demasiado joven.
+Si no es lo suficientemente alto: Lo sentimos, no eres lo suficientemente alto.
+Si tiene menos de 15 años y no hay adulto: Lo sentimos, necesitas un adulto contigo.
+Si tiene menos de 15 años con adulto: Puedes subirte con la supervisión de un adulto.
+Si tiene 15 años o más y es lo suficientemente alto: ¡Puedes subirte por tu cuenta!
+*/
+
+import java.util.Scanner;
+public class MontañaRusa{
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Ingrese su edad:");
+		int edad = sc.nextInt();
+		System.out.println("Ingrese su altura  en cm: ");
+		int altura = sc.nextInt();
+		System.out.println("Lo acompaña un adulto (S/N)");
+		sc.nextLine();
+		String tieneAdulto =sc.nextLine();
+		
+		if ( edad >= 12){
+		    if ( altura > 150){
+		        if( edad < 15 ){
+		            if ((tieneAdulto.equalsIgnoreCase("s")) || (tieneAdulto.equalsIgnoreCase("si"))) {
+		              System.out.println("Puedes subirte con la supervisión de un adulto.");  
+		            }else if( (tieneAdulto.equalsIgnoreCase("n")) || (tieneAdulto.equalsIgnoreCase("no"))){
+		                System.out.println("Lo sentimos, necesitas un adulto contigo.");
+		            }
+		        }else{
+		            System.out.println("¡Puedes subirte por tu cuenta!");
+		        }
+		    }else{
+		        System.out.println("Lo sentimos, no eres lo suficientemente alto.");
+		    }
+		}else{
+		    System.out.println("Lo sentimos, eres demasiado joven.");
+		}
+	}
