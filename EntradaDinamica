@@ -1,0 +1,27 @@
+/******************************************************************************
+
+Programa que obtenga un número dinámico de valores de entrada.
+
+La primera entrada es un número que representa el número de valores de entrada 
+que le siguen. Los siguientes valores de entrada son números enteros.
+
+Al final, imprime la suma de todos los números de entrada 
+(sin incluir la primera entrada).
+
+*******************************************************************************/
+
+import java.util.Scanner;
+
+public class EntradaDinamica {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        // Write your code below
+    int inicio = scanner.nextInt();
+int sum = 0;
+ for( int i = 0; i < inicio; i++){
+    int num = scanner.nextInt();
+     sum += num; 
+ }
+System.out.println(sum);
+    }
+}
